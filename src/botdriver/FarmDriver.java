@@ -3,9 +3,11 @@ package botdriver;
 import googlesheetcontroller.SheetDriver;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 
+import taskstructure.CheckNumberofTroopsTask;
 import taskstructure.SendTroopsTask;
 import taskstructure.TaskQueue;
 
@@ -22,8 +24,15 @@ public class FarmDriver extends Thread{
 	public void run(){
 		try {
 			String coords = map_driver.findNearestEmpty();
-			TaskQueue.push(new SendTroopsTask(driver, coords.split(",")[0], coords.split(",")[1]));
-			SheetDriver.updateLastFarmTime(coords);
-		} catch (IOException | ServiceException e) {e.printStackTrace();}
+			synchronized(this){
+			TaskQueue.push(new CheckNumberofTroopsTask(driver, this));
+			this.wait();
+			}
+			Map<String, String> troop_map = SheetDriver.getTroopCount("Village 1");
+			if(Integer.parseInt(troop_map.get("legionnaire")) >= 3){
+				TaskQueue.push(new SendTroopsTask(driver, coords.split(",")[0], coords.split(",")[1]));
+				SheetDriver.updateLastFarmTime(coords);
+			}
+		} catch (IOException | ServiceException | InterruptedException e) {e.printStackTrace();}
 	}
 }

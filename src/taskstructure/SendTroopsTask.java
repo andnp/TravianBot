@@ -1,6 +1,7 @@
 package taskstructure;
 
 import java.io.IOException;
+import java.util.Map;
 
 import googlesheetcontroller.SheetDriver;
 
@@ -28,7 +29,7 @@ public class SendTroopsTask extends TaskNode{
 			String loc = SheetDriver.getBuildingById("Rally", "Village1");
 			driver.navigate().to("ts2.travian.com/build.php?tt=2&id=" + loc);
 			while(driver.findElements(By.id("troops")).isEmpty()){}
-			driver.findElement(By.id("troops")).findElement(By.className("line-first")).findElement(By.tagName("input")).sendKeys("5");
+			driver.findElement(By.id("troops")).findElement(By.className("line-first")).findElement(By.tagName("input")).sendKeys("3");
 			driver.findElement(By.className("option")).findElements(By.tagName("label")).get(2).findElement(By.tagName("input")).click();
 			driver.findElement(By.id("xCoordInput")).clear();
 			((JavascriptExecutor)driver).executeScript("document.getElementById('xCoordInput').setAttribute('value', '"+x+"')");

@@ -43,6 +43,52 @@ public class SheetDriver {
 		return ret;
 	}
 	
+	public static Map<String,String> getTroopCount(String village) throws IOException, ServiceException{
+		Map<String, String> ret = new HashMap<String, String>();
+		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
+		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
+		WorksheetEntry table = null;
+		for(WorksheetEntry worksheet : worksheets){
+			if(worksheet.getTitle().getPlainText().equals("Troops")){
+				table = worksheet;
+				break;
+			}
+		}
+		URL listFeedUrl = table.getListFeedUrl();
+		ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+		for(ListEntry row : listFeed.getEntries()){
+			if(row.getCustomElements().getValue("village").contains(village)){
+				for(String tag : row.getCustomElements().getTags()){
+					if(!tag.equals("village"));
+					ret.put(tag, row.getCustomElements().getValue(tag));
+				}
+			}
+		}
+		return ret;
+	}
+	
+	public static void updateTroopCount(String village, Map<String, String> troop_map) throws IOException, ServiceException{
+		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
+		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
+		WorksheetEntry table = null;
+		for(WorksheetEntry worksheet : worksheets){
+			if(worksheet.getTitle().getPlainText().equals("Troops")){
+				table = worksheet;
+				break;
+			}
+		}
+		URL listFeedUrl = table.getListFeedUrl();
+		ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+		for(ListEntry row : listFeed.getEntries()){
+			if(row.getCustomElements().getValue("village").contains(village)){
+				for(Entry<String, String> entry : troop_map.entrySet()){
+					row.getCustomElements().setValueLocal(entry.getKey(), entry.getValue());
+				}
+				row.update();
+			}
+		}
+	}
+	
 	public static void updateLastFarmTime(String coords) throws IOException, ServiceException{
 		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
 		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
