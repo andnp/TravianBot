@@ -36,6 +36,7 @@ public class UpdateExistingBuildingsTask extends TaskNode {
 				}
 			}
 			ControlCenter.openVillageCenter();
+			while(driver.findElements(By.id("clickareas")).isEmpty()){}
 			buildings = driver.findElement(By.id("clickareas")).findElements(By.tagName("area"));
 			for(WebElement building : buildings){
 				String name = building.getAttribute("alt").split(" ")[0];

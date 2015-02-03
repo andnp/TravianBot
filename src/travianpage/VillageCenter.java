@@ -36,6 +36,7 @@ public class VillageCenter extends MainPages{
 	
 	public static int getRemainingTime(){
 		int ret = -1;
+		while(driver.findElements(By.className("boxes-contents")).isEmpty()){}
 		List<WebElement> buildings = driver.findElement(By.className("boxes-contents")).findElements(By.tagName("li"));
 		if(buildings.size() > 1){
 			List<WebElement> timers = driver.findElement(By.className("boxes-contents")).findElements(By.id("timer2"));
@@ -61,7 +62,7 @@ public class VillageCenter extends MainPages{
 		Integer clay;
 		Integer iron;
 		Integer food;
-		if(driver.findElement(By.id("contract")).findElements(By.className("none")).isEmpty()){
+		if(driver.findElement(By.id("contract")).findElements(By.className("resources")).isEmpty()){
 			wood = 0;
 			clay = 0;
 			iron = 0;

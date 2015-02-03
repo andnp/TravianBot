@@ -43,6 +43,26 @@ public class SheetDriver {
 		return ret;
 	}
 	
+	public static void updateLastFarmTime(String coords) throws IOException, ServiceException{
+		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
+		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
+		WorksheetEntry table = null;
+		for(WorksheetEntry worksheet : worksheets){
+			if(worksheet.getTitle().getPlainText().equals("Map")){
+				table = worksheet;
+				break;
+			}
+		}
+		URL listFeedUrl = table.getListFeedUrl();
+		ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
+		for(ListEntry row : listFeed.getEntries()){
+			if(row.getCustomElements().getValue("coords").contains(coords)){
+				row.getCustomElements().setValueLocal("lastfarmed", System.currentTimeMillis() + "");
+				row.update();
+			}
+		}
+	}
+	
 	public static List<String> getEmptyCoordsList() throws IOException, ServiceException{
 		List<String> ret = new ArrayList<String>();
 		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);

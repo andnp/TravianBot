@@ -66,6 +66,7 @@ public class ResourceBuildings extends MainPages{
 	}
 	
 	public static int getRemainingTime(){
+		while(driver.findElements(By.className("boxes-contents")).isEmpty()){}
 		List<WebElement> timers = driver.findElement(By.className("boxes-contents")).findElements(By.id("timer1"));
 		if(timers.isEmpty()) return -1;
 		String time = timers.get(0).getText();
