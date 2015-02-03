@@ -56,12 +56,22 @@ public class VillageCenter extends MainPages{
 	
 	public static Map<String, Integer> getUpgradeCost(URL building){
 		driver.navigate().to(building);
-		
-		while(driver.findElements(By.className("r1")).isEmpty()){}
-		Integer wood = Integer.parseInt(driver.findElement(By.className("r1")).getText());
-		Integer clay = Integer.parseInt(driver.findElement(By.className("r2")).getText());
-		Integer iron = Integer.parseInt(driver.findElement(By.className("r3")).getText());
-		Integer food = Integer.parseInt(driver.findElement(By.className("r4")).getText());
+		while(driver.findElements(By.id("contract")).isEmpty()){}
+		Integer wood;
+		Integer clay;
+		Integer iron;
+		Integer food;
+		if(driver.findElement(By.id("contract")).findElements(By.className("none")).isEmpty()){
+			wood = 0;
+			clay = 0;
+			iron = 0;
+			food = 0;
+		} else {
+			wood = Integer.parseInt(driver.findElement(By.className("r1")).getText());
+			clay = Integer.parseInt(driver.findElement(By.className("r2")).getText());
+			iron = Integer.parseInt(driver.findElement(By.className("r3")).getText());
+			food = Integer.parseInt(driver.findElement(By.className("r4")).getText());
+		}
 		
 		Map<String, Integer> ret = new HashMap<String, Integer>();
 		ret.put("wood", wood);

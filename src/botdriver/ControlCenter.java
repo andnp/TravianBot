@@ -13,7 +13,6 @@ import com.google.gdata.util.ServiceException;
 
 import travianpage.Login;
 import travianpage.MainPages;
-import travianpage.ResourceBuildings;
 
 public class ControlCenter {
 	static WebDriver driver = new FirefoxDriver();

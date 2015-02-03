@@ -64,7 +64,7 @@ public class UpgradeDriver extends Thread{
 						TaskQueue.push(new UpgradeTask(new URL("http://ts2.travian.com/build.php?id=" + loc), this));
 						this.wait();
 					}
-				} else {Thread.sleep(600000);}
+				} else {Thread.sleep(300 * 1000);}
 			} catch (IOException | ServiceException | InterruptedException e) {
 				e.printStackTrace();
 			}
