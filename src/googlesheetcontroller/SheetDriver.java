@@ -109,7 +109,8 @@ public class SheetDriver {
 		}
 	}
 	
-	public static List<String> getEmptyCoordsList() throws IOException, ServiceException{
+	public static List<String> getEmptyCoordsList(boolean to_farm) throws IOException, ServiceException{
+		long now = System.currentTimeMillis();
 		List<String> ret = new ArrayList<String>();
 		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
 		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
@@ -124,14 +125,14 @@ public class SheetDriver {
 		ListFeed listFeed = service.getFeed(listFeedUrl, ListFeed.class);
 		for(ListEntry row : listFeed.getEntries()){
 			//System.out.println(row.getCustomElements().getTags());
-			if(row.getCustomElements().getValue("empty").contains("yes")){
+			if(row.getCustomElements().getValue("empty").contains("yes") && (now - Long.parseLong(row.getCustomElements().getValue("lastfarmed"))) > (60 * 60000)){
 				ret.add(row.getCustomElements().getValue("coords"));
 			}
 		}
 		return ret;
 	}
 	
-	public static void addMapElement(String coords, String name, String type, String pop, String all, String own, String empty) throws IOException, ServiceException{
+	public static void addMapElement(String coords, String name, String type, String pop, String all, String own, String empty, long time) throws IOException, ServiceException{
 		WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
 		List<WorksheetEntry> worksheets = worksheetFeed.getEntries();
 		WorksheetEntry table = null;
@@ -154,6 +155,7 @@ public class SheetDriver {
 				row.getCustomElements().setValueLocal("alliance", all);
 				row.getCustomElements().setValueLocal("owner", own);
 				row.getCustomElements().setValueLocal("empty", empty);
+				row.getCustomElements().setValueLocal("lastfarmed", time + "");
 				row.update();
 				updated = true;
 			}

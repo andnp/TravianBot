@@ -20,6 +20,7 @@ public class ControlCenter {
 	static TaskManager task_manager = new TaskManager();
 	static MapDriver map_driver = new MapDriver(driver);
 	static FarmDriver farm_driver = new FarmDriver(map_driver, driver);
+	static HeroDriver hero_driver = new HeroDriver(driver);
 	
 	public static void main(String[] args) throws InterruptedException, IOException, ServiceException{
 		Login.login(driver, "andnp", "972965");
@@ -29,8 +30,13 @@ public class ControlCenter {
 		task_manager.start();
 		map_driver.start();
 		farm_driver.start();
+		hero_driver.start();
 	}
 	
+	public static void openHero(){
+		openResources();
+		driver.findElement(By.id("heroImageButton")).click();
+	}
 	public static void openVillageCenter(){
 		WebElement nav_bar = driver.findElement(By.className("villageBuildings")).findElement(By.tagName("a"));
 		nav_bar.click();

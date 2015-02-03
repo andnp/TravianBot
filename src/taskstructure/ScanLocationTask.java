@@ -48,7 +48,7 @@ public class ScanLocationTask extends TaskNode{
 					alliance = details.findElement(By.id("village_info")).findElements(By.tagName("tr")).get(1).findElement(By.tagName("td")).getText();
 					owner = details.findElement(By.id("village_info")).findElements(By.tagName("tr")).get(2).findElement(By.tagName("td")).getText();
 					empty = "no";
-					SheetDriver.addMapElement(x + "," + y, name, type, pop, alliance, owner, empty);
+					SheetDriver.addMapElement(x + "," + y, name, type, pop, alliance, owner, empty, 0);
 				} else if(details.findElements(By.tagName("h4")).get(0).getText().equals("Bonus")){
 					// This is an Unoccupied oases
 					name = "Oases";
@@ -59,7 +59,7 @@ public class ScanLocationTask extends TaskNode{
 					empty = "no";
 					List<WebElement> troops = driver.findElement(By.id("troop_info")).findElements(By.tagName("tr"));
 					if(troops.get(0).getText().equals("none")){ empty = "yes";}
-					SheetDriver.addMapElement(x + "," + y, name, type, pop, alliance, owner, empty);
+					SheetDriver.addMapElement(x + "," + y, name, type, pop, alliance, owner, empty, 0);
 				}
 			}
 		} catch (IOException | ServiceException e) {

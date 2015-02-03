@@ -41,7 +41,7 @@ public class MapDriver extends Thread{
 		}
 	}
 	public String findNearestEmpty() throws IOException, ServiceException{
-		List<String> coords = SheetDriver.getEmptyCoordsList();
+		List<String> coords = SheetDriver.getEmptyCoordsList(true);
 		double shortest = Double.POSITIVE_INFINITY;
 		String nearest_coords = "";
 		for(String coord : coords){

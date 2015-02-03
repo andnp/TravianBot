@@ -22,17 +22,20 @@ public class FarmDriver extends Thread{
 	}
 	
 	public void run(){
-		try {
-			String coords = map_driver.findNearestEmpty();
-			synchronized(this){
-			TaskQueue.push(new CheckNumberofTroopsTask(driver, this));
-			this.wait();
-			}
-			Map<String, String> troop_map = SheetDriver.getTroopCount("Village 1");
-			if(Integer.parseInt(troop_map.get("legionnaire")) >= 3){
-				TaskQueue.push(new SendTroopsTask(driver, coords.split(",")[0], coords.split(",")[1]));
-				SheetDriver.updateLastFarmTime(coords);
-			}
-		} catch (IOException | ServiceException | InterruptedException e) {e.printStackTrace();}
+		while(true){
+			try {
+				String coords = map_driver.findNearestEmpty();
+				synchronized(this){
+				TaskQueue.push(new CheckNumberofTroopsTask(driver, this));
+				this.wait();
+				}
+				Map<String, String> troop_map = SheetDriver.getTroopCount("Village 1");
+				if(Integer.parseInt(troop_map.get("legionnaire")) >= 3){
+					TaskQueue.push(new SendTroopsTask(driver, coords.split(",")[0], coords.split(",")[1]));
+					SheetDriver.updateLastFarmTime(coords);
+				}
+				Thread.sleep(600 * 1000);
+			} catch (IOException | ServiceException | InterruptedException e) {e.printStackTrace();}
+		}
 	}
 }
