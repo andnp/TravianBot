@@ -33,9 +33,10 @@ public class CheckResourcesTask extends TaskNode {
 	}
 
 	public CheckResourcesTask(UpgradeDriver up_drive){
+		super();
 		this.up_drive = up_drive;
 	}
 	public double getPriority(){
-		return 5.0;
+		return 5.0 + 2*this.age();
 	}
 }

@@ -29,10 +29,11 @@ public class UpgradeTask extends TaskNode{
 		}
 	}
 	public UpgradeTask(URL url, UpgradeDriver dv){
+		super();
 		this.url = url;
 		this.dv = dv;
 	}
 	public double getPriority(){
-		return 5.0;
+		return 5.0 + 2*this.age();
 	}
 }

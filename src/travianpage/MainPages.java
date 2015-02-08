@@ -15,6 +15,7 @@ public abstract class MainPages {
 	}
 	public static Map<String, Integer> getVillageResources(){
 		ControlCenter.openResources();
+		while(driver.findElements(By.id("stockBarResource1")).isEmpty()){}
 		Integer wood = Integer.parseInt(driver.findElement(By.id("stockBarResource1")).findElement(By.id("l1")).getText().replaceAll("[\\D]", ""));
 		Integer clay = Integer.parseInt(driver.findElement(By.id("stockBarResource2")).findElement(By.id("l2")).getText().replaceAll("[\\D]", ""));
 		Integer iron = Integer.parseInt(driver.findElement(By.id("stockBarResource3")).findElement(By.id("l3")).getText().replaceAll("[\\D]", ""));

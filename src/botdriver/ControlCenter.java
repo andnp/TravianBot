@@ -42,6 +42,7 @@ public class ControlCenter {
 		nav_bar.click();
 	}
 	public static void openResources(){
+		while(driver.findElements(By.className("villageResources")).isEmpty()){}
 		WebElement nav_bar = driver.findElement(By.className("villageResources")).findElement(By.tagName("a"));
 		nav_bar.click();
 	}

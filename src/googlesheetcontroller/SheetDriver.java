@@ -82,7 +82,7 @@ public class SheetDriver {
 		for(ListEntry row : listFeed.getEntries()){
 			if(row.getCustomElements().getValue("village").contains(village)){
 				for(Entry<String, String> entry : troop_map.entrySet()){
-					row.getCustomElements().setValueLocal(entry.getKey(), entry.getValue());
+					row.getCustomElements().setValueLocal(entry.getKey().replace(" ", ""), entry.getValue());
 				}
 				row.update();
 			}

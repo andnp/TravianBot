@@ -50,6 +50,15 @@ public class TaskQueue {
 		System.out.println("Taking from Queue: " + length);
 		return ret;
 	}
+	public static void reprioritize(){
+		while(writeBlock()){}
+		is_being_written = true;
+		TaskNode working = head_node;
+		while(working.hasChild()){
+			
+		}
+		is_being_written = false;
+	}
 	private static boolean readBlock(){
 		return is_being_written;
 	}

@@ -28,12 +28,13 @@ public class CheckTimeUntilUpgradeTask extends TaskNode {
 	}
 	
 	public CheckTimeUntilUpgradeTask(WebDriver driver, UpgradeDriver up_drive, String village){
+		super();
 		this.driver = driver;
 		this.village = village;
 		this.up_drive = up_drive;
 	}
 	public double getPriority(){
-		return 5.0;
+		return 5.0 + this.age();
 	}
 
 }

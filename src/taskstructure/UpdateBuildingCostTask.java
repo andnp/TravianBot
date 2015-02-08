@@ -31,9 +31,10 @@ public class UpdateBuildingCostTask extends TaskNode{
 		}
 	}
 	public UpdateBuildingCostTask(URL building){
+		super();
 		this.building_name = building;
 	}
 	public double getPriority(){
-		return 5.0;
+		return 5.0 + .5*this.age();
 	}
 }

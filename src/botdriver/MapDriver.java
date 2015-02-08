@@ -37,7 +37,7 @@ public class MapDriver extends Thread{
 			}
 			try {Thread.sleep(600000);} catch (InterruptedException e) {e.printStackTrace();}
 			radius++;
-			if(radius > 50) break;
+			if(radius > 50) radius = 1;
 		}
 	}
 	public String findNearestEmpty() throws IOException, ServiceException{

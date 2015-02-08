@@ -10,15 +10,26 @@ import java.util.List;
 
 import org.openqa.selenium.*;
 
+import botdriver.FarmDriver;
+
 import com.google.gdata.util.ServiceException;
 
 public class ScanLocationTask extends TaskNode{
 	WebDriver driver;
+	FarmDriver farm_driver = null;
 	int x, y;
+	public boolean clear;
 	public ScanLocationTask(WebDriver driver, int x, int y){
 		this.driver = driver;
 		this.x = x;
 		this.y = y;
+	}
+	public ScanLocationTask(WebDriver driver, int x, int y, FarmDriver fmdv){
+		super();
+		this.driver = driver;
+		this.x = x;
+		this.y = y;
+		this.farm_driver = fmdv;
 	}
 	public double getPriority(){
 		return 1.0;
@@ -58,8 +69,13 @@ public class ScanLocationTask extends TaskNode{
 					owner = "";
 					empty = "no";
 					List<WebElement> troops = driver.findElement(By.id("troop_info")).findElements(By.tagName("tr"));
-					if(troops.get(0).getText().equals("none")){ empty = "yes";}
+					if(troops.get(0).getText().equals("none")){ empty = "yes"; clear = true;}
 					SheetDriver.addMapElement(x + "," + y, name, type, pop, alliance, owner, empty, 0);
+				}
+			}
+			if(farm_driver != null){
+				synchronized(farm_driver){
+					farm_driver.notify();
 				}
 			}
 		} catch (IOException | ServiceException e) {
