@@ -1,6 +1,6 @@
-package main.java.taskstructure;
+package taskstructure;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.SheetDriver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.openqa.selenium.*;
 
-import main.java.botdriver.FarmDriver;
+import botdriver.FarmDriver;
 
 import com.google.gdata.util.ServiceException;
 

@@ -1,18 +1,17 @@
-package main.java.botdriver;
+package botdriver;
 
 import java.io.IOException;
 
-import main.java.googlesheetcontroller.SheetDriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.google.gdata.util.ServiceException;
+import travianpage.*;
+import googlesheetcontroller.*;
 
-import main.java.travianpage.Login;
-import main.java.travianpage.MainPages;
+import com.google.gdata.util.ServiceException;
 
 public class ControlCenter {
 	static WebDriver driver = new FirefoxDriver();

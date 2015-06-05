@@ -1,6 +1,6 @@
-package main.java.taskstructure;
+package taskstructure;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -11,8 +11,8 @@ import org.openqa.selenium.WebElement;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.botdriver.ControlCenter;
-import main.java.botdriver.FarmDriver;
+import botdriver.ControlCenter;
+import botdriver.FarmDriver;
 
 public class CheckNumberofTroopsTask extends TaskNode{
 	WebDriver driver;

@@ -1,16 +1,15 @@
-package main.java.botdriver;
+package botdriver;
 
 import java.io.IOException;
 import java.util.List;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.*;
 
 import org.openqa.selenium.WebDriver;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.taskstructure.ScanLocationTask;
-import main.java.taskstructure.TaskQueue;
+import taskstructure.*;
 
 public class MapDriver extends Thread{
 	String my_coords = "122,-58";

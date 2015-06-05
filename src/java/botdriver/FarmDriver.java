@@ -1,6 +1,4 @@
-package main.java.botdriver;
-
-import main.java.googlesheetcontroller.SheetDriver;
+package botdriver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,13 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import taskstructure.*;
+
+import googlesheetcontroller.*;
+
 import org.openqa.selenium.WebDriver;
-
-import main.java.taskstructure.CheckNumberofTroopsTask;
-import main.java.taskstructure.ScanLocationTask;
-import main.java.taskstructure.SendTroopsTask;
-import main.java.taskstructure.TaskQueue;
-
 import com.google.gdata.util.ServiceException;
 
 public class FarmDriver extends Thread{

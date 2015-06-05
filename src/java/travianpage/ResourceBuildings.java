@@ -1,4 +1,4 @@
-package main.java.travianpage;
+package travianpage;
 
 import java.net.URL;
 import java.util.*;

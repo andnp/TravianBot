@@ -1,6 +1,4 @@
-package main.java.botdriver;
-
-import main.java.googlesheetcontroller.SheetDriver;
+package botdriver;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -12,13 +10,8 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 
 import com.google.gdata.util.ServiceException;
-
-import main.java.taskstructure.CheckResourcesTask;
-import main.java.taskstructure.CheckTimeUntilUpgradeTask;
-import main.java.taskstructure.TaskQueue;
-import main.java.taskstructure.UpdateBuildingCostTask;
-import main.java.taskstructure.UpdateExistingBuildingsTask;
-import main.java.taskstructure.UpgradeTask;
+import taskstructure.*;
+import googlesheetcontroller.*;
 
 public class UpgradeDriver extends Thread{
 	WebDriver driver;

@@ -1,11 +1,11 @@
-package main.java.taskstructure;
+package taskstructure;
 
 import org.openqa.selenium.WebDriver;
 
-import main.java.travianpage.ResourceBuildings;
-import main.java.travianpage.VillageCenter;
-import main.java.botdriver.ControlCenter;
-import main.java.botdriver.UpgradeDriver;
+import travianpage.ResourceBuildings;
+import travianpage.VillageCenter;
+import botdriver.ControlCenter;
+import botdriver.UpgradeDriver;
 
 public class CheckTimeUntilUpgradeTask extends TaskNode {
 	WebDriver driver;

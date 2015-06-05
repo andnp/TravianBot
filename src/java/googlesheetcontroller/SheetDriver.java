@@ -1,4 +1,4 @@
-package main.java.googlesheetcontroller;
+package googlesheetcontroller;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,11 +1,11 @@
-package main.java.taskstructure;
+package taskstructure;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.SheetDriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.botdriver.ControlCenter;
+import botdriver.ControlCenter;
 
 public class SendTroopsTask extends TaskNode{
 	WebDriver driver;

@@ -1,9 +1,8 @@
-package main.java.botdriver;
+package botdriver;
 
 import java.util.Random;
 
-import main.java.taskstructure.TaskNode;
-import main.java.taskstructure.TaskQueue;
+import taskstructure.*;
 
 public class TaskManager extends Thread {
 	Random sleep_time = new Random();

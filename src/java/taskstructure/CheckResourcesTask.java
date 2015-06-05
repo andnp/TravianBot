@@ -1,4 +1,4 @@
-package main.java.taskstructure;
+package taskstructure;
 
 import main.java.googlesheetcontroller.SheetDriver;
 
@@ -7,9 +7,9 @@ import java.util.Map;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.travianpage.ResourceBuildings;
-import main.java.botdriver.ControlCenter;
-import main.java.botdriver.UpgradeDriver;
+import travianpage.ResourceBuildings;
+import botdriver.ControlCenter;
+import botdriver.UpgradeDriver;
 
 public class CheckResourcesTask extends TaskNode {
 	UpgradeDriver up_drive;

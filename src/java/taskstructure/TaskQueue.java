@@ -1,4 +1,4 @@
-package main.java.taskstructure;
+package taskstructure;
 
 public class TaskQueue {
 	private static TaskNode head_node = null;

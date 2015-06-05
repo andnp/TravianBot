@@ -1,6 +1,6 @@
-package main.java.taskstructure;
+package taskstructure;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.SheetDriver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,8 +8,8 @@ import java.util.Map;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.travianpage.ResourceBuildings;
-import main.java.travianpage.VillageCenter;
+import travianpage.ResourceBuildings;
+import travianpage.VillageCenter;
 
 public class UpdateBuildingCostTask extends TaskNode{
 	URL building_name;

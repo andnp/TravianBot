@@ -1,6 +1,6 @@
-package main.java.taskstructure;
+package taskstructure;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.SheetDriver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,8 +8,8 @@ import java.util.Map;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.botdriver.UpgradeDriver;
-import main.java.travianpage.ResourceBuildings;
+import botdriver.UpgradeDriver;
+import travianpage.ResourceBuildings;
 
 public class UpgradeTask extends TaskNode{
 	URL url;

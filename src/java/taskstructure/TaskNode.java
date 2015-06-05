@@ -1,4 +1,4 @@
-package main.java.taskstructure;
+package taskstructure;
 
 public abstract class TaskNode {
 	private TaskNode parent = null;

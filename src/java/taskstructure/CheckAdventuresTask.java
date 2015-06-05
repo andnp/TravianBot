@@ -1,4 +1,4 @@
-package main.java.taskstructure;
+package taskstructure;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import main.java.botdriver.HeroDriver;
+import botdriver.HeroDriver;
 
 public class CheckAdventuresTask extends TaskNode{
 	WebDriver driver;

@@ -1,4 +1,4 @@
-package main.java.travianpage;
+package travianpage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import main.java.botdriver.ControlCenter;
+import botdriver.ControlCenter;
 
 public abstract class MainPages {
 	protected static WebDriver driver;

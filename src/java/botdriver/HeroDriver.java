@@ -1,9 +1,7 @@
-package main.java.botdriver;
+package botdriver;
 
+import taskstructure.*;
 import org.openqa.selenium.WebDriver;
-
-import main.java.taskstructure.CheckAdventuresTask;
-import main.java.taskstructure.TaskQueue;
 
 public class HeroDriver extends Thread{
 	WebDriver driver;

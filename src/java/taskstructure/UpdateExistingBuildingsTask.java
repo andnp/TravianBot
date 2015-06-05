@@ -1,6 +1,6 @@
-package main.java.taskstructure;
+package taskstructure;
 
-import main.java.googlesheetcontroller.SheetDriver;
+import googlesheetcontroller.SheetDriver;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ import org.openqa.selenium.WebElement;
 
 import com.google.gdata.util.ServiceException;
 
-import main.java.botdriver.ControlCenter;
-import main.java.botdriver.UpgradeDriver;
+import botdriver.ControlCenter;
+import botdriver.UpgradeDriver;
 
 public class UpdateExistingBuildingsTask extends TaskNode {
 	WebDriver driver;
