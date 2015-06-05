@@ -3,6 +3,8 @@
 #################
 
 *.pydevproject
+.idea
+.iml
 .project
 .metadata
 bin/
